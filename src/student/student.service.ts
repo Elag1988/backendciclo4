@@ -1,41 +1,40 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
-
-import { Model } from 'mongoose';
-import { InjectModel } from '@nestjs/mongoose';
 import { IStudent } from './interfaces/student.interface';
 import { CreateStudentDTO } from './dto/create_student.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { StudentEntity } from './models/student.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class StudentService {
 
-    constructor(@InjectModel('Student') private readonly studentModel: Model<IStudent> ){}
+    constructor(@InjectRepository(StudentEntity) private readonly studentRepository: Repository<IStudent> ){}
 
 
-    getStudents(): Promise<IStudent[]> {
-        const students = this.studentModel.find();
-        return Promise.resolve(students);
+    async getStudents(): Promise<IStudent[]> {
+        const students = await this.studentRepository.find();
+        return students;
     }
 
     async getStudentByID(studentId: string):Promise<IStudent>{
-        const student = await this.studentModel.findById(studentId);
+        const student = await this.studentRepository.findOne(studentId);
         return student;
     }
 
     async createStudent(createStudentDTO: CreateStudentDTO): Promise<IStudent>{
-        const student = new this.studentModel(createStudentDTO);
-        await student.save();
+        const student = await this.studentRepository.save(createStudentDTO);
         return student;
     }
 
-    async updateStudent(studentId: string, createStudentDTO: CreateStudentDTO):Promise<IStudent>{
-        const updatedStudent = await this.studentModel.findByIdAndUpdate(studentId, createStudentDTO, { new: true} );
-        return updatedStudent;
+    async updateStudent(studentId: string, createStudentDTO: CreateStudentDTO):Promise<any>{
+        const updateStudent = await this.studentRepository.update(studentId , createStudentDTO )
+        return updateStudent;
     }
 
-    async deleteStudent(studentId: string):Promise<IStudent>{
-        const deletedStudent = await this.studentModel.findByIdAndDelete(studentId);
-        return deletedStudent;
+    async deleteStudent(studentId: string):Promise<any>{
+        const deleteStudent = await this.studentRepository.delete(studentId)
+        return deleteStudent;
     }
 
 
