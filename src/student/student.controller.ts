@@ -61,8 +61,8 @@ export class StudentController {
         });
     }
 
-    @Delete('/delete/')
-    async deleteStudent(@Res() res, @Query('studentId') id){
+    @Delete('/delete/:studentId')
+    async deleteStudent(@Res() res, @Param('studentId') id){
         
         const student = await this.studentService.deleteStudent(id);
 

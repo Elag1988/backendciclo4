@@ -28,12 +28,12 @@ export class StudentService {
     }
 
     async updateStudent(studentId: string, createStudentDTO: CreateStudentDTO):Promise<any>{
-        const updateStudent = await this.studentRepository.update(studentId , createStudentDTO )
+        const updateStudent = await this.studentRepository.update(studentId , createStudentDTO );
         return updateStudent;
     }
 
     async deleteStudent(studentId: string):Promise<any>{
-        const deleteStudent = await this.studentRepository.delete(studentId)
+        const deleteStudent = await this.studentRepository.delete(studentId);
         return deleteStudent;
     }
 
