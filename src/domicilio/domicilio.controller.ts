@@ -36,7 +36,7 @@ export class DomicilioController {
     @Post('/create')
     
         async createDomicilio(@Res() res, @Body() createDomicilioDTO: CreateDomicilioDTO ) {
-            const domicilio = await this.domicilioService.createDomicilio(createDomicilioDTO)
+            const domicilio = await this.domicilioService.createDomicilio(createDomicilioDTO);
             return res.status(HttpStatus.CREATED).json({
                 message: 'Domicilio Creado',
                 data: domicilio

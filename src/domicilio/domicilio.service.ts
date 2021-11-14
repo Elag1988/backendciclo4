@@ -22,17 +22,19 @@ export class DomicilioService {
     }
 
     async createDomicilio(createDomicilioDTO: CreateDomicilioDTO): Promise<IDomicilio> {
-        const domicilio = this.domiciliosRepository.save(createDomicilioDTO);
+        const domicilio = await this.domiciliosRepository.save(createDomicilioDTO);
         return domicilio;
     }
 
-    async updateDomicilio(domicilioId: string , createDomicilioDTO: CreateDomicilioDTO): Promise<any> {
-        const updateDomicilio = await this.domiciliosRepository.update(domicilioId, createDomicilioDTO);
+    async updateDomicilio(domicilioId: string , createDomicilioDTO: CreateDomicilioDTO): Promise<IDomicilio> {
+        await this.domiciliosRepository.update(domicilioId, createDomicilioDTO);
+        const updateDomicilio = this.domiciliosRepository.findOne(domicilioId);
         return updateDomicilio;
     }
 
-    async deleteDomicilio(domicilioId: string): Promise<any> {
-        const deleteDomicilio = await this.domiciliosRepository.delete(domicilioId)
+    async deleteDomicilio(domicilioId: string): Promise<IDomicilio> {
+        const deleteDomicilio = this.domiciliosRepository.findOne(domicilioId);
+        await this.domiciliosRepository.delete(domicilioId)
         return deleteDomicilio;
     }
 
