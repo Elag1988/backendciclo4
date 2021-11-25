@@ -1,0 +1,61 @@
+<h5 class="text-center mt-3"><strong>Inventario de productos</strong></h5>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-primary me-md-2 mb-2" type="button" data-bs-toggle="modal"
+        data-bs-target="#modalAddProducto">
+        <i class="bi bi-plus-circle-fill"></i> Añadir producto</button>
+</div>
+
+<div class="row">
+
+    <div class=col-4 *ngFor="let item of productList">
+        <div class="card" style="width: 100%;">
+            <img src="{{item.photoUrl}}" class="card-img-top" alt="..." style="width: 100%; height: 100%;">
+            <div class="card-body">
+                <h5 class="card-title">{{item.nombre}}</h5>
+                <p class="card-text">Precio: ${{item.precioDeVenta}}</p>
+                <p class="card-text">Descuento: {{item.descuento}}%</p>
+                <p class="card-text">Disponible: {{item.stock}} unidades</p>
+                <a href="#" class="btn btn-primary">Editar Producto</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<br />
+
+<h5 class="text-center mt-3"><strong>Inventario de productos</strong></h5>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-primary me-md-2 mb-2" type="button" data-bs-toggle="modal"
+        data-bs-target="#modalAddProducto">
+        <i class="bi bi-plus-circle-fill"></i> Añadir producto</button>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio de Venta</th>
+            <th scope="col">Precio de Compra</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Descuento</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of productList">
+            <th scope="row">{{item.idProducto}}</th>
+            <td>{{item.nombre}}</td>
+            <td>{{item.precioDeVenta}}</td>
+            <td>{{item.precioDeCompra}}</td>
+            <td>{{item.stock}}</td>
+            <td>{{item.descuento}}</td>
+
+        </tr>
+    </tbody>
+</table>

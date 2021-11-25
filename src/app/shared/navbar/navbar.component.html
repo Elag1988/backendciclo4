@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Domicilio para todo</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions] ="{exact:true}" >Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/perfil/list']" routerLinkActive="active" >Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/inventario/list']" routerLinkActive="active" >Inventario</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/inventario/create']" routerLinkActive="active" >Crear Producto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/domicilios/list']" routerLinkActive="active" >Domicilios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/calificaciones/list']" routerLinkActive="active" >Calificaciones</a>
+          </li>
+        </ul>
+        <span class="navbar-text d-none d-lg-block">
+          Bienvenido a la plataforma de los pequeños negocios!
+        </span>
+      </div>
+    </div>
+  </nav>
